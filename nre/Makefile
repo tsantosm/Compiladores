@@ -1,16 +1,14 @@
-all: main
+all: delete main clean
 
-CC = clang
-override CFLAGS += -g -Wno-everything -pthread -lm
-
-SRCS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.c' -print)
-HEADERS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.h' -print)
-
-main: $(SRCS) $(HEADERS)
-	$(CC) $(CFLAGS) $(SRCS) -o "$@"
-
-main-debug: $(SRCS) $(HEADERS)
-	$(CC) $(CFLAGS) -O0 $(SRCS) -o "$@"
+binario:
+	gcc -W -Wall gerarBinario.c -o gerarBinario
+	clear
 
 clean:
-	rm -f main main-debug
+	clear
+
+delete: 
+	@rm -rf src/*.o
+
+main: nre.c
+	gcc -W -Wall nre.c -o nre
